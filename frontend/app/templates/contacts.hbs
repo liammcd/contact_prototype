@@ -1,0 +1,13 @@
+<ContactListing/>
+
+<h2>Contact List</h2>
+{{#each this.model as |result|}}
+	<ul>
+	<li>First name: {{result.first_name}}</li>
+	<li>Last name: {{result.last_name}}</li>
+	<li>Address: {{result.address}}</li>
+	<li>Phone number: {{result.phone_number}}</li>
+	<Delete @id={{result.id}}/>
+	</ul>
+{{/each}}
+{{outlet}}

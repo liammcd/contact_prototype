@@ -1,0 +1,15 @@
+{{#paper-form onSubmit=(action "addContact") as |form|}}
+  <div class="layout-row">
+    <div class="layout-column flex-50">
+      	{{form.input label="First Name" value=firstName onChange=(action (mut firstName)) required=true}}
+     	{{form.input label="Last Name" value=lastName onChange=(action (mut lastName)) required=true}}
+    </div>
+    <div class="layout-column flex-50">
+    	{{form.input label="Address" value=address onChange=(action (mut address)) required=true}}
+      	{{form.input label="Phone Number" value=phoneNumber onChange=(action (mut phoneNumber)) required=true}}
+    </div>
+  </div>
+  <div class="layout-row">
+    {{#form.submit-button raised=true primary=true}}Add Contact{{/form.submit-button}}
+  </div>
+{{/paper-form}}
