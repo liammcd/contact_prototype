@@ -4,7 +4,10 @@ import Ember from 'ember';
 export default Component.extend({
 	store: Ember.inject.service(),
 	actions: {
-		addContact()  {
+		editContact(con) {
+			this.store.findRecord('contact', con).then(function(result) {
+				result.destroyRecord();
+			});
 			var newContact = this.get('store').createRecord('contact', {
 				first_name: this.get('firstName'),
 				last_name: this.get('lastName'),

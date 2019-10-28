@@ -7,7 +7,8 @@
 	<li>Last name: {{result.last_name}}</li>
 	<li>Address: {{result.address}}</li>
 	<li>Phone number: {{result.phone_number}}</li>
-	<Delete @id={{result.id}}/>
+	<Delete @id={{result.id}}/> 
+	<Edit @id={{result.id}}/>
 	</ul>
 {{/each}}
 {{outlet}}
