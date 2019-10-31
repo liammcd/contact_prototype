@@ -1,5 +1,24 @@
+{{#paper-toolbar}}
 <h1>Contact Manager</h1>
+{{/paper-toolbar}}
+<LinkTo class="right" @route="new">{{#paper-button raised=true primary=true}}<div class="right">NEW</div>{{/paper-button}}</LinkTo>
+<table>
+	<thead>
+		<tr>
+			<td class="description"><b>First Name</b></td>
+			<td class="description"><b>Last Name</b></td>
+			<td><b>Address</b></td>
+			<td><b>Phone number</b></td>
+		</tr>
+	</thead>
+	{{#each this.model as |result|}}
+		<tr>
+			<td>{{paper-icon "perm-identity"}}{{result.first_name}}</td>
+			<td>{{result.last_name}}</td>
+			<td>{{paper-icon "map"}}{{result.address}}</td>
+			<td>{{paper-icon "local_phone"}}{{result.phone_number}}</td>
+		</tr>
+	{{/each}}
+</table>	
 <br/>
-{{paper-icon "perm-identity"}}
-<LinkTo @route="contacts">View Contacts</LinkTo>
 {{outlet}}
