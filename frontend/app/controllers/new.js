@@ -10,6 +10,10 @@ export default Controller.extend({
 				phone_number: this.get('phoneNumber')
 			});
 			newContact.save();
+			this.set('firstName', '');
+			this.set('lastName', '');
+			this.set('address', '');
+			this.set('phoneNumber', '');
 			this.transitionToRoute("index");
 		}
 	}
