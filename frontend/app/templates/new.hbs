@@ -1,23 +1,46 @@
-{{#paper-dialog class="flex-50" clickOutsideToClose=false}}
-    <form>
-      {{#paper-toolbar}}
-        {{#paper-toolbar-tools}}
-          <h2>Mango (Fruit)</h2>
-          <span class="flex"></span>
-          {{#paper-button iconButton=true onClick=(action "closeDialogWithParent" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
-        {{/paper-toolbar-tools}}
-      {{/paper-toolbar}}
-
-      {{#paper-dialog-content}}
-          <p>
-            This is a dialog rendered into a specific element. Clicking outside the dialog will close it.
-          </p>
-      {{/paper-dialog-content}}
-
-      {{#paper-dialog-actions class="layout-row"}}
+{{#paper-dialog class="flex-77" clickOutsideToClose=false}}
+	{{#paper-toolbar}}
+      {{#paper-toolbar-tools}}
+        <h2>New Contact</h2>
         <span class="flex"></span>
-        {{#paper-button onClick=(action "closeDialogWithParent" "cancel")}}Cancel{{/paper-button}}
-        {{#paper-button onClick=(action "closeDialogWithParent" "ok")}}OK{{/paper-button}}
-      {{/paper-dialog-actions}}
-    </form>
+        <LinkTo @route="index">{{#paper-button iconButton=true}}{{paper-icon icon="close"}}{{/paper-button}}</LinkTo>
+      {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+	{{#paper-dialog-content}}
+	
+	{{#paper-form onSubmit=(action "addContact") as |form|}}
+	
+		<div class="layout-row">
+			<div class="layout-column flex-80">
+				{{paper-input label="First name" type="text" value=firstName onChange=(action (mut firstName)) icon="person" required=true}}
+			</div>
+			<div class="layout-column flex-20"></div>
+		</div>
+		<div class="layout-row">
+			<div class="layout-column flex-80">
+				{{paper-input label="Last name" type="text" value=lastName onChange=(action (mut lastName)) icon="person" required=true}}
+			</div>
+			<div class="layout-column flex-20"></div>
+		</div>
+		<div class="layout-row">
+			<div class="layout-column flex-80">
+				{{paper-input label="Address" type="text" value=address onChange=(action (mut address)) icon="place" required=true}}
+			</div>
+			<div class="layout-column flex-20"></div>
+		</div>
+		<div class="layout-row">
+			<div class="layout-column flex-80">
+				{{paper-input label="Phone number" type="text" value=phoneNumber onChange=(action (mut phoneNumber)) icon="phone" required=true}}
+			</div>
+			<div class="layout-column flex-20"></div>
+		</div>
+	
+	{{#paper-dialog-actions class="layout-row"}}
+      <span class="flex"></span>
+      <LinkTo @route="index">{{#paper-button}}Cancel{{/paper-button}}</LinkTo>
+      {{#form.submit-button raised=true primary=true}}OK{{/form.submit-button}}
+    {{/paper-dialog-actions}}
+	{{/paper-form}}
+
+	{{/paper-dialog-content}}
 {{/paper-dialog}}

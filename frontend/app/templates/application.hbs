@@ -1,22 +1,27 @@
 {{#paper-toolbar}}
 <h1>Contact Manager</h1>
 {{/paper-toolbar}}
-<LinkTo class="right" @route="new">{{#paper-button raised=true primary=true}}<div class="right">NEW</div>{{/paper-button}}</LinkTo>
+<div class="layout-row flex">
+	<div class="layout-column flex-90"></div>
+	<div class="layout-column flex-10">
+		<LinkTo class="right" @route="new">{{#paper-button raised=true primary=true}}<div class="right">NEW</div>{{/paper-button}}</LinkTo>
+	</div>
+</div>
 <table>
 	<thead>
 		<tr>
-			<td class="description"><b>First Name</b></td>
-			<td class="description"><b>Last Name</b></td>
-			<td><b>Address</b></td>
-			<td><b>Phone number</b></td>
+			<th><b>First Name</b></th>
+			<th><b>Last Name</b></th>
+			<th><b>Address</b></th>
+			<th><b>Phone number</b></th>
 		</tr>
 	</thead>
 	{{#each this.model as |result|}}
 		<tr>
-			<td>{{paper-icon "perm-identity"}}{{result.first_name}}</td>
-			<td>{{result.last_name}}</td>
-			<td>{{paper-icon "map"}}{{result.address}}</td>
-			<td>{{paper-icon "local_phone"}}{{result.phone_number}}</td>
+			<td><LinkTo @route="show" @model={{result}}>{{paper-icon "perm-identity"}}{{result.first_name}}</LinkTo></td>
+			<td><LinkTo @route="show" @model={{result}}>{{result.last_name}}</LinkTo></td>
+			<td><LinkTo @route="show" @model={{result}}>{{paper-icon "map"}}{{result.address}}</LinkTo></td>
+			<td><LinkTo @route="show" @model={{result}}>{{paper-icon "local_phone"}}{{result.phone_number}}</LinkTo></td>
 		</tr>
 	{{/each}}
 </table>	
